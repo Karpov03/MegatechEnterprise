@@ -29,6 +29,13 @@ public class SiteController {
 		return siteService.getAllSite();
 	}
 	
+	// ################ getSite by Id ####################
+			@RequestMapping(value = "/getSite/{siteId}", method = RequestMethod.GET)
+			public List<Site> getSiteById(@PathVariable List<Integer> siteId) {
+				System.out.println("Get Site By Given Site COde");
+				return siteService.getSiteById(siteId);
+			}
+	
 	// ################ getSite by Code ####################
 		@RequestMapping(value = "/getSite/code/{siteCode}", method = RequestMethod.GET)
 		public List<Site> getSiteByCode(@PathVariable List<String> siteCode) {

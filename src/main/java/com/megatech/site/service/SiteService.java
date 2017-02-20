@@ -19,6 +19,11 @@ public class SiteService {
 	public List<Site> getAllSite() {
 		return siteRepository.findAll();
 	}
+	
+	@Transactional
+	public List<Site> getSiteById(List<Integer> siteId) {
+		return siteRepository.findBysiteIdIn(siteId);
+	}
 
 	@Transactional
 	public List<Site> getSiteByCode(List<String> siteCode) {

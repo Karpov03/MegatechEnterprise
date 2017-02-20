@@ -13,5 +13,7 @@ public interface SiteRepository extends JpaRepository<Site, Long> {
 	public List<Site> findBysiteCodeIn(List<String> siteCode);
 
 	public List<Site> findBysiteNameIn(List<String> siteName);
+	
+	public List<Site> findBysiteIdIn(List<Integer> siteName);
 
 }
