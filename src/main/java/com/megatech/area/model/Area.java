@@ -13,6 +13,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.megatech.asset.model.Asset;
@@ -25,7 +27,11 @@ public class Area {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int areaId;
+	@NotNull
+	@Size(min=3,max=40)
 	private String areaName;
+	@NotNull
+	@Size(min=3,max=40)
 	private String areaCode;
 
 	@ManyToOne(fetch = FetchType.LAZY)

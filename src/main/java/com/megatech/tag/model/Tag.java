@@ -8,6 +8,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.megatech.asset.model.Asset;
@@ -19,8 +21,14 @@ public class Tag {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int tagId;
+	@NotNull
+	@Size(min=3,max=40)
 	private String tagName;
+	@NotNull
+	@Size(min=3,max=40)
 	private String tagCode;
+	@NotNull
+	@Size(min=5,max=160)
 	private String tagDesc;
 	private String dataType;
 	private String ranges;

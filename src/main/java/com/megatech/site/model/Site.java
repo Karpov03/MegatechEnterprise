@@ -11,6 +11,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 import com.megatech.area.model.Area;
 
@@ -19,18 +21,23 @@ import com.megatech.area.model.Area;
 public class Site {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int siteId;
+	private Long siteId;
+	@NotNull
+	@Size(min=3,max=40)
 	private String siteName;
+	@NotNull
+	@Size(min=3,max=40)
 	private String siteCode;
 
-	@OneToMany(mappedBy = "site", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-	private Collection<Area> area = new ArrayList<Area>();
+	 @OneToMany(mappedBy = "site", cascade = CascadeType.ALL, fetch =
+	 FetchType.EAGER)
+	 private Collection<Area> area = new ArrayList<Area>();
 
-	public int getSiteId() {
+	public long getSiteId() {
 		return siteId;
 	}
 
-	public void setSiteId(int siteId) {
+	public void setSiteId(long siteId) {
 		this.siteId = siteId;
 	}
 
@@ -50,12 +57,12 @@ public class Site {
 		this.siteCode = siteCode;
 	}
 
-	public Collection<Area> getArea() {
-		return area;
-	}
-
-	public void setArea(Collection<Area> area) {
-		this.area = area;
-	}
+	 public Collection<Area> getArea() {
+	 return area;
+	 }
+	
+	 public void setArea(Collection<Area> area) {
+	 this.area = area;
+	 }
 
 }

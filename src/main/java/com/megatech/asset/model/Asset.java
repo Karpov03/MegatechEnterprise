@@ -16,10 +16,13 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.megatech.area.model.Area;
 import com.megatech.tag.model.Tag;
+
 
 @Entity
 @Table(name = "ASSET")
@@ -28,7 +31,11 @@ public class Asset {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int assetId;
+	@NotNull
+	@Size(min=3,max=40)
 	private String assetName;
+	@NotNull
+	@Size(min=3,max=40)
 	private String assetCode;
 	private String make;
 	private String model;

@@ -12,27 +12,27 @@ import com.megatech.site.repository.SiteRepository;
 @Service
 public class SiteService {
 
-	@Autowired
-	SiteRepository siteRepository;
+//	@Autowired
+//	SiteRepository siteRepository;
 
-	@Transactional
-	public List<Site> getAllSite() {
-		return siteRepository.findAll();
-	}
+//	@Transactional
+//	public List<Site> getAllSite() {
+//		return siteRepository.findAll();
+//	}
 	
-	@Transactional
-	public List<Site> getSiteById(List<Integer> siteId) {
-		return siteRepository.findBysiteIdIn(siteId);
-	}
-
-	@Transactional
-	public List<Site> getSiteByCode(List<String> siteCode) {
-		return siteRepository.findBysiteCodeIn(siteCode);
-	}
-
-	@Transactional
-	public List<Site> getSiteByName(List<String> siteName) {
-		return siteRepository.findBysiteNameIn(siteName);
-	}
+//	@Transactional
+//	public List<Site> getSiteById(List<Integer> siteId) {
+//		return siteRepository.findBysiteIdIn(siteId);
+//	}
+//
+//	@Transactional
+//	public List<Site> getSiteByCode(List<String> siteCode) {
+//		return siteRepository.findBysiteCodeIn(siteCode);
+//	}
+//
+//	@Transactional
+//	public List<Site> getSiteByName(List<String> siteName) {
+//		return siteRepository.findBysiteNameIn(siteName);
+//	}
 
 }
