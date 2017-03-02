@@ -29,14 +29,21 @@ public class Area {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long areaId;
 	@NotNull
-	@Size(min=3,max=40)
+	@Size(min = 3, max = 40)
 	private String areaName;
 	@NotNull
-	@Size(min=3,max=40)
+	@Size(min = 3, max = 40)
 	private String areaCode;
 
+<<<<<<< HEAD
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "site_id", nullable = true)
+=======
+	private transient Long siteId;
+
+	@ManyToOne
+	@JoinColumn(name = "site_id", nullable = false)
+>>>>>>> origin/master
 	private Site site;
 
 	@OneToMany(mappedBy = "area", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
@@ -73,6 +80,16 @@ public class Area {
 
 	public void setSite(Site site) {
 		this.site = site;
+	}
+
+	
+	
+	public Long getSiteId() {
+		return siteId;
+	}
+
+	public void setSiteId(Long siteId) {
+		this.siteId = siteId;
 	}
 
 	public Collection<Asset> getAsset() {

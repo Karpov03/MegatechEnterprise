@@ -23,6 +23,7 @@ public class RestConfig extends RepositoryRestConfigurerAdapter {
 		validatingListener.addValidator("beforeCreate", validator);
 		validatingListener.addValidator("beforeSave", validator);
 	}
+<<<<<<< HEAD
 
 	@Override
 	public void configureRepositoryRestConfiguration(RepositoryRestConfiguration config) {
@@ -34,5 +35,13 @@ public class RestConfig extends RepositoryRestConfigurerAdapter {
 		config.useHalAsDefaultJsonMediaType(false);
 		config.setDefaultMediaType(MediaType.APPLICATION_JSON);
 	}
+=======
+>>>>>>> origin/master
 
+	@Override
+	public void configureRepositoryRestConfiguration(RepositoryRestConfiguration config) {
+		config.exposeIdsFor(Site.class, Area.class);
+		config.setReturnBodyOnCreate(true);
+		config.setReturnBodyOnUpdate(true);
+	}
 }

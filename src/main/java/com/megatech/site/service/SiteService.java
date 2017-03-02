@@ -16,6 +16,7 @@ public class SiteService {
 	SiteRepository siteRepository;
 
 	@Transactional
+<<<<<<< HEAD
 	public List<Site> getAllSite() {
 		return siteRepository.findAll();
 	}
@@ -26,6 +27,8 @@ public class SiteService {
 	}
 
 	@Transactional
+=======
+>>>>>>> origin/master
 	public List<Site> getSiteById(List<Integer> siteId) {
 		return siteRepository.findBysiteIdIn(siteId);
 	}
@@ -40,6 +43,7 @@ public class SiteService {
 		return siteRepository.findBysiteNameIn(siteName);
 	}
 
+<<<<<<< HEAD
 	@Transactional
 	public Site saveSite(Site site) {
 		return siteRepository.save(site);
@@ -48,6 +52,31 @@ public class SiteService {
 	@Transactional
 	public void deleteSite(Long siteId) {
 		siteRepository.delete(siteId);
+=======
+	public Site findBysiteId(Long id) {
+		return siteRepository.findBysiteId(id);
+	}
+
+	public Site findByName(String name) {
+		return siteRepository.findBysiteName(name);
+	}
+
+	public void saveSite(Site site) {
+		siteRepository.save(site);
+	}
+
+	public void updateSite(Site site) {
+		saveSite(site);
+	}
+
+	public void deleteSiteById(Long id) {
+		siteRepository.delete(id);
+	}
+
+
+	public List<Site> findAllSites() {
+		return siteRepository.findAll();
+>>>>>>> origin/master
 	}
 
 }

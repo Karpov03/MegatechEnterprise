@@ -10,6 +10,7 @@ import com.megatech.site.model.Site;
 @Repository
 public interface SiteRepository extends JpaRepository<Site, Long> {
 
+<<<<<<< HEAD
 //	@RestResource(rel = "site_codes", path = "containsCode")
 //	public List<Site> findBysiteCodeIn(@Param("siteCode") List<String> siteCode);
 //
@@ -28,5 +29,16 @@ public interface SiteRepository extends JpaRepository<Site, Long> {
 	
 	public List<Site> findBysiteIdIn(List<Integer> siteId);
 	public Site findBysiteId(Integer siteId);
+=======
+	public List<Site> findBysiteCodeIn(List<String> siteCode);
+
+	Site findBysiteName(String name);
+
+	public List<Site> findBysiteNameIn(List<String> siteName);
+
+	public List<Site> findBysiteIdIn(List<Integer> siteId);
+
+	Site findBysiteId(Long id);
+>>>>>>> origin/master
 
 }
