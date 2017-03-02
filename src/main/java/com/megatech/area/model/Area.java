@@ -16,6 +16,7 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.megatech.asset.model.Asset;
 import com.megatech.site.model.Site;
@@ -26,7 +27,7 @@ public class Area {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int areaId;
+	private Long areaId;
 	@NotNull
 	@Size(min=3,max=40)
 	private String areaName;
@@ -35,17 +36,17 @@ public class Area {
 	private String areaCode;
 
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "site_id", nullable = false)
+	@JoinColumn(name = "site_id", nullable = true)
 	private Site site;
 
 	@OneToMany(mappedBy = "area", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	private Collection<Asset> asset = new ArrayList<Asset>();
 
-	public int getAreaId() {
+	public Long getAreaId() {
 		return areaId;
 	}
 
-	public void setAreaId(int areaId) {
+	public void setAreaId(Long areaId) {
 		this.areaId = areaId;
 	}
 

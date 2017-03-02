@@ -1,7 +1,7 @@
 package com.megatech.site.model;
 
 import java.util.ArrayList;
-import java.util.Collection;
+import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -13,6 +13,8 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+
+import org.springframework.data.rest.core.annotation.RestResource;
 
 import com.megatech.area.model.Area;
 
@@ -31,13 +33,15 @@ public class Site {
 
 	 @OneToMany(mappedBy = "site", cascade = CascadeType.ALL, fetch =
 	 FetchType.EAGER)
-	 private Collection<Area> area = new ArrayList<Area>();
+	 private List<Area> area = new ArrayList<Area>();
 
-	public long getSiteId() {
+	
+
+	public Long getSiteId() {
 		return siteId;
 	}
 
-	public void setSiteId(long siteId) {
+	public void setSiteId(Long siteId) {
 		this.siteId = siteId;
 	}
 
@@ -57,11 +61,11 @@ public class Site {
 		this.siteCode = siteCode;
 	}
 
-	 public Collection<Area> getArea() {
+	 public List<Area> getArea() {
 	 return area;
 	 }
 	
-	 public void setArea(Collection<Area> area) {
+	 public void setArea(List<Area> area) {
 	 this.area = area;
 	 }
 
