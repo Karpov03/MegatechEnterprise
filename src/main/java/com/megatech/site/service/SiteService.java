@@ -12,27 +12,47 @@ import com.megatech.site.repository.SiteRepository;
 @Service
 public class SiteService {
 
-//	@Autowired
-//	SiteRepository siteRepository;
+	@Autowired
+	SiteRepository siteRepository;
 
-//	@Transactional
-//	public List<Site> getAllSite() {
-//		return siteRepository.findAll();
-//	}
-	
-//	@Transactional
-//	public List<Site> getSiteById(List<Integer> siteId) {
-//		return siteRepository.findBysiteIdIn(siteId);
-//	}
-//
-//	@Transactional
-//	public List<Site> getSiteByCode(List<String> siteCode) {
-//		return siteRepository.findBysiteCodeIn(siteCode);
-//	}
-//
-//	@Transactional
-//	public List<Site> getSiteByName(List<String> siteName) {
-//		return siteRepository.findBysiteNameIn(siteName);
-//	}
+	@Transactional
+	public List<Site> getSiteById(List<Integer> siteId) {
+		return siteRepository.findBysiteIdIn(siteId);
+	}
+
+	@Transactional
+	public List<Site> getSiteByCode(List<String> siteCode) {
+		return siteRepository.findBysiteCodeIn(siteCode);
+	}
+
+	@Transactional
+	public List<Site> getSiteByName(List<String> siteName) {
+		return siteRepository.findBysiteNameIn(siteName);
+	}
+
+	public Site findBysiteId(Long id) {
+		return siteRepository.findBysiteId(id);
+	}
+
+	public Site findByName(String name) {
+		return siteRepository.findBysiteName(name);
+	}
+
+	public void saveSite(Site site) {
+		siteRepository.save(site);
+	}
+
+	public void updateSite(Site site) {
+		saveSite(site);
+	}
+
+	public void deleteSiteById(Long id) {
+		siteRepository.delete(id);
+	}
+
+
+	public List<Site> findAllSites() {
+		return siteRepository.findAll();
+	}
 
 }

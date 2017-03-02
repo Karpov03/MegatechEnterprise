@@ -29,15 +29,16 @@ public class Site {
 	@Size(min=3,max=40)
 	private String siteCode;
 
-	 @OneToMany(mappedBy = "site", cascade = CascadeType.ALL, fetch =
-	 FetchType.EAGER)
-	 private Collection<Area> area = new ArrayList<Area>();
+	 @OneToMany(targetEntity=Area.class,mappedBy = "site", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	 private Collection<Area> Area = new ArrayList<Area>();
 
-	public long getSiteId() {
+
+
+	public Long getSiteId() {
 		return siteId;
 	}
 
-	public void setSiteId(long siteId) {
+	public void setSiteId(Long siteId) {
 		this.siteId = siteId;
 	}
 
@@ -57,12 +58,15 @@ public class Site {
 		this.siteCode = siteCode;
 	}
 
-	 public Collection<Area> getArea() {
-	 return area;
-	 }
-	
-	 public void setArea(Collection<Area> area) {
-	 this.area = area;
-	 }
+	public Collection<Area> getArea() {
+		return Area;
+	}
 
+	public void setArea(Collection<Area> area) {
+		Area = area;
+	}
+
+
+
+	
 }
