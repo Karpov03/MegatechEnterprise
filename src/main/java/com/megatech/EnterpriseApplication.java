@@ -1,19 +1,18 @@
 package com.megatech;
 
 import org.springframework.boot.SpringApplication;
-import org.springframework.boot.builder.SpringApplicationBuilder;
-import org.springframework.boot.web.support.SpringBootServletInitializer;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 //@SpringBootApplication
-public class EnterpriseApplication extends SpringBootServletInitializer {
+public class EnterpriseApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(EnterpriseApplication.class, args);
 	}
 
-	@Override
-	protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
-		return application.sources(EnterpriseApplication.class);
-	}
+//	@Override
+//	protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
+//		return application.sources(EnterpriseApplication.class);
+//	}
 
 }

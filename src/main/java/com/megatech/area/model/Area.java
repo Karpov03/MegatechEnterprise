@@ -16,7 +16,6 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.megatech.asset.model.Asset;
 import com.megatech.site.model.Site;
@@ -35,19 +34,16 @@ public class Area {
 	@Size(min = 3, max = 40)
 	private String areaCode;
 
-<<<<<<< HEAD
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "site_id", nullable = true)
-=======
 	private transient Long siteId;
 
+	// @JsonBackReference
 	@ManyToOne
 	@JoinColumn(name = "site_id", nullable = false)
->>>>>>> origin/master
 	private Site site;
 
-	@OneToMany(mappedBy = "area", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-	private Collection<Asset> asset = new ArrayList<Asset>();
+	 @OneToMany(mappedBy = "area", cascade = CascadeType.ALL, fetch =
+	 FetchType.LAZY)
+	 private Collection<Asset> asset = new ArrayList<Asset>();
 
 	public Long getAreaId() {
 		return areaId;
@@ -82,22 +78,20 @@ public class Area {
 		this.site = site;
 	}
 
+	 public Long getSiteId() {
+	 return siteId;
+	 }
 	
+	 public void setSiteId(Long siteId) {
+	 this.siteId = siteId;
+	 }
 	
-	public Long getSiteId() {
-		return siteId;
-	}
-
-	public void setSiteId(Long siteId) {
-		this.siteId = siteId;
-	}
-
-	public Collection<Asset> getAsset() {
-		return asset;
-	}
-
-	public void setAsset(Collection<Asset> asset) {
-		this.asset = asset;
-	}
+	 public Collection<Asset> getAsset() {
+	 return asset;
+	 }
+	
+	 public void setAsset(Collection<Asset> asset) {
+	 this.asset = asset;
+	 }
 
 }

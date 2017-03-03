@@ -32,6 +32,8 @@ public class Tag {
 	private String tagDesc;
 	private String dataType;
 	private String ranges;
+	
+	private transient Long assetId;
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "asset_id", nullable = false)
@@ -94,4 +96,14 @@ public class Tag {
 		this.asset = asset;
 	}
 
+	public Long getAssetId() {
+		return assetId;
+	}
+
+	public void setAssetId(Long assetId) {
+		this.assetId = assetId;
+	}
+
+	
+	
 }
