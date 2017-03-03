@@ -1,7 +1,7 @@
 package com.megatech.site.model;
 
 import java.util.ArrayList;
-import java.util.List;
+import java.util.Collection;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -14,8 +14,6 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
-import org.springframework.data.rest.core.annotation.RestResource;
-
 import com.megatech.area.model.Area;
 
 @Entity
@@ -25,26 +23,16 @@ public class Site {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long siteId;
 	@NotNull
-	@Size(min=3,max=40)
+	@Size(min = 3, max = 40)
 	private String siteName;
 	@NotNull
-	@Size(min=3,max=40)
+	@Size(min = 3, max = 40)
 	private String siteCode;
 
-<<<<<<< HEAD
-	 @OneToMany(mappedBy = "site", cascade = CascadeType.ALL, fetch =
-	 FetchType.EAGER)
-	 private List<Area> area = new ArrayList<Area>();
+	//@JsonManagedReference
+	@OneToMany(targetEntity = Area.class, mappedBy = "site", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	private Collection<Area> Area = new ArrayList<Area>();
 
-	
-
-=======
-	 @OneToMany(targetEntity=Area.class,mappedBy = "site", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-	 private Collection<Area> Area = new ArrayList<Area>();
-
-
-
->>>>>>> origin/master
 	public Long getSiteId() {
 		return siteId;
 	}
@@ -69,25 +57,14 @@ public class Site {
 		this.siteCode = siteCode;
 	}
 
-<<<<<<< HEAD
-	 public List<Area> getArea() {
-	 return area;
-	 }
-	
-	 public void setArea(List<Area> area) {
-	 this.area = area;
-	 }
-=======
 	public Collection<Area> getArea() {
 		return Area;
 	}
->>>>>>> origin/master
 
 	public void setArea(Collection<Area> area) {
 		Area = area;
 	}
-
-
-
 	
+	
+
 }
