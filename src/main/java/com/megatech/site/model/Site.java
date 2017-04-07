@@ -23,16 +23,15 @@ public class Site {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long siteId;
 	@NotNull
-	@Size(min=3,max=40)
+	@Size(min = 3, max = 40)
 	private String siteName;
 	@NotNull
-	@Size(min=3,max=40)
+	@Size(min = 3, max = 40)
 	private String siteCode;
 
-	 @OneToMany(targetEntity=Area.class,mappedBy = "site", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-	 private Collection<Area> Area = new ArrayList<Area>();
-
-
+	//@JsonManagedReference
+	@OneToMany(targetEntity = Area.class, mappedBy = "site", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	private Collection<Area> Area = new ArrayList<Area>();
 
 	public Long getSiteId() {
 		return siteId;
@@ -65,8 +64,7 @@ public class Site {
 	public void setArea(Collection<Area> area) {
 		Area = area;
 	}
-
-
-
 	
+	
+
 }

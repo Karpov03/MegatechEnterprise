@@ -36,12 +36,14 @@ public class Area {
 
 	private transient Long siteId;
 
+	// @JsonBackReference
 	@ManyToOne
 	@JoinColumn(name = "site_id", nullable = false)
 	private Site site;
 
-	@OneToMany(mappedBy = "area", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-	private Collection<Asset> asset = new ArrayList<Asset>();
+	 @OneToMany(mappedBy = "area", cascade = CascadeType.ALL, fetch =
+	 FetchType.LAZY)
+	 private Collection<Asset> asset = new ArrayList<Asset>();
 
 	public Long getAreaId() {
 		return areaId;
@@ -76,22 +78,20 @@ public class Area {
 		this.site = site;
 	}
 
+	 public Long getSiteId() {
+	 return siteId;
+	 }
 	
+	 public void setSiteId(Long siteId) {
+	 this.siteId = siteId;
+	 }
 	
-	public Long getSiteId() {
-		return siteId;
-	}
-
-	public void setSiteId(Long siteId) {
-		this.siteId = siteId;
-	}
-
-	public Collection<Asset> getAsset() {
-		return asset;
-	}
-
-	public void setAsset(Collection<Asset> asset) {
-		this.asset = asset;
-	}
+	 public Collection<Asset> getAsset() {
+	 return asset;
+	 }
+	
+	 public void setAsset(Collection<Asset> asset) {
+	 this.asset = asset;
+	 }
 
 }

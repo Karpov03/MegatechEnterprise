@@ -13,7 +13,6 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
@@ -23,30 +22,35 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.megatech.area.model.Area;
 import com.megatech.tag.model.Tag;
 
-
-@Entity
-@Table(name = "ASSET")
+//@Entity
+//@Table(name = "ASSET")
+@Entity(name = "ASSET")
+// @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+// @DiscriminatorColumn(name="type", discriminatorType=DiscriminatorType.STRING)
+// @DiscriminatorValue(value="A")
 public class Asset {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int assetId;
 	@NotNull
-	@Size(min=3,max=40)
+	@Size(min = 3, max = 40)
 	private String assetName;
 	@NotNull
-	@Size(min=3,max=40)
+	@Size(min = 3, max = 40)
 	private String assetCode;
 	private String make;
 	private String model;
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date installDate;
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	private transient Long areaId;
+
+	@ManyToOne
 	@JoinColumn(name = "area_id", nullable = false)
 	private Area area;
 
-	@OneToMany(mappedBy = "asset", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@OneToMany(mappedBy = "asset", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private Collection<Tag> tag = new ArrayList<Tag>();
 
 	public int getAssetId() {
@@ -96,6 +100,7 @@ public class Asset {
 	public void setInstallDate(Date installDate) {
 		this.installDate = installDate;
 	}
+
 	@JsonIgnore
 	public Area getArea() {
 		return area;
@@ -112,7 +117,13 @@ public class Asset {
 	public void setTag(Collection<Tag> tag) {
 		this.tag = tag;
 	}
-	
-	
+
+	public Long getAreaId() {
+		return areaId;
+	}
+
+	public void setAreaId(Long areaId) {
+		this.areaId = areaId;
+	}
 
 }

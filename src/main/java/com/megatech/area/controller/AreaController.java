@@ -10,12 +10,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.megatech.area.model.Area;
 import com.megatech.area.service.AreaService;
-import com.megatech.area.model.Area;
 
 @RestController
 @RequestMapping(value = "/area")
@@ -54,8 +52,8 @@ public class AreaController {
 
 	}
 
-	@PutMapping(value = "/save/{id}")
-	public void updateUser(@PathVariable("id") long id, @RequestBody Area area) {
+	@PutMapping(value = "/update/{id}")
+	public void updateArea(@PathVariable("id") long id, @RequestBody Area area) {
 		Area currentArea = areaService.findByareaId(id);
 
 		if (currentArea == null) {
@@ -72,7 +70,7 @@ public class AreaController {
 	}
 
 	@DeleteMapping(value = "/delete/{id}")
-	public void deleteUser(@PathVariable("id") long id) {
+	public void deleteArea(@PathVariable("id") long id) {
 
 		Area area = areaService.findByareaId(id);
 		System.out.println(area);

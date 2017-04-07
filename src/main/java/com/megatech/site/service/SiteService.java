@@ -16,7 +16,17 @@ public class SiteService {
 	SiteRepository siteRepository;
 
 	@Transactional
-	public List<Site> getSiteById(List<Integer> siteId) {
+	public List<Site> getAllSite() {
+		return siteRepository.findAll();
+	}
+
+	@Transactional
+	public Site findSiteById(Integer siteId) {
+		return siteRepository.findBysiteId(siteId);
+	}
+
+	@Transactional
+	public List<Site> getSiteById(List<Long> siteId) {
 		return siteRepository.findBysiteIdIn(siteId);
 	}
 
@@ -28,6 +38,11 @@ public class SiteService {
 	@Transactional
 	public List<Site> getSiteByName(List<String> siteName) {
 		return siteRepository.findBysiteNameIn(siteName);
+	}
+
+	@Transactional
+	public void deleteSite(Long siteId) {
+		siteRepository.delete(siteId);
 	}
 
 	public Site findBysiteId(Long id) {
@@ -49,7 +64,6 @@ public class SiteService {
 	public void deleteSiteById(Long id) {
 		siteRepository.delete(id);
 	}
-
 
 	public List<Site> findAllSites() {
 		return siteRepository.findAll();

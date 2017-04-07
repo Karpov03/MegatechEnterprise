@@ -7,14 +7,16 @@ import org.springframework.stereotype.Repository;
 
 import com.megatech.area.model.Area;
 
+//@RepositoryRestResource
 @Repository
 public interface AreaRepository extends JpaRepository<Area, Long> {
+	
 	public List<Area> findByareaCodeIn(List<String> areaCode);
 
 	public List<Area> findByareaNameIn(List<String> areaName);
 
-	Area findByareaName(String name);
+	public Area findByareaName(String name);
 
-	Area findByareaId(Long id);
+	public Area findByareaId(Long id);
 
 }

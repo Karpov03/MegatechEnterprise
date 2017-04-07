@@ -9,12 +9,17 @@ import com.megatech.asset.model.Asset;
 
 @Repository
 public interface AssetRepository extends JpaRepository<Asset, Long> {
-	public List<Asset> findByassetCodeIn( List<String> assetCode);
+	
+	public List<Asset> findByassetCodeIn(List<String> assetCode);
 
 	public List<Asset> findByassetNameIn(List<String> assetName);
 
-	public List<Asset> findBymakeIn( List<String> make);
+	public List<Asset> findBymakeIn(List<String> make);
 
-	public List<Asset> findBymodelIn( List<String> model);
+	public List<Asset> findBymodelIn(List<String> model);
+
+	public Asset findByassetName(String name);
+
+	public Asset findByassetId(Long id);
 
 }

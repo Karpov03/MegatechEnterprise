@@ -28,13 +28,14 @@ public class SiteController {
 		return "Hi SiteController";
 	}
 
+
 	@GetMapping(value = "/list")
 	public List<Site> listAllSites() {
 		return siteService.findAllSites();
 	}
 
 	@GetMapping(value = "/getlist/{siteId}")
-	public List<Site> getSiteById(@PathVariable List<Integer> siteId) {
+	public List<Site> getSiteById(@PathVariable List<Long> siteId) {
 		System.out.println("Get Site By Given Site COde");
 		return siteService.getSiteById(siteId);
 	}
@@ -58,8 +59,8 @@ public class SiteController {
 
 	}
 
-	@PutMapping(value = "/save/{id}")
-	public void updateUser(@PathVariable("id") long id, @RequestBody Site site) {
+	@PutMapping(value = "/update/{id}")
+	public void updateSite(@PathVariable("id") long id, @RequestBody Site site) {
 		Site currentSite = siteService.findBysiteId(id);
 
 		if (currentSite == null) {
@@ -76,7 +77,7 @@ public class SiteController {
 	}
 
 	@DeleteMapping(value = "/delete/{id}")
-	public void deleteUser(@PathVariable("id") long id) {
+	public void deleteSite(@PathVariable("id") long id) {
 
 		Site site = siteService.findBysiteId(id);
 		System.out.println(site);
